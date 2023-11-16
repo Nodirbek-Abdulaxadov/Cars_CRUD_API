@@ -34,10 +34,17 @@ public class CarsController : ControllerBase
             ImageUrl = "https://hips.hearstapps.com/hmg-prod/images/dg020-105cl-1574257068.jpg"
         },
     };
+    private readonly ICarInterface carInterface;
+
+    public CarsController(ICarInterface carInterface)
+    {
+        this.carInterface = carInterface;
+    }
 
     [HttpGet("hammasi")]
-    public ActionResult<List<Car>> GetCars()
+    public async Task<IActionResult> GetCars()
     {
+        var list = await carInterface.GetAllAsync();
         return Ok(cars);
     }
 
