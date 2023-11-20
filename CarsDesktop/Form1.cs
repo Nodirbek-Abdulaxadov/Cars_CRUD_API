@@ -1,10 +1,12 @@
 using Newtonsoft.Json;
+using Toastr.Winforms;
 
 namespace CarsDesktop;
 
 public partial class Form1 : Form
 {
     HttpClient client = new();
+    Toast toast = new(ToastrPosition.BottomRight, 2000);
 
     public Form1()
     {
